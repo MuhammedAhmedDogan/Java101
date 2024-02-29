@@ -1,5 +1,5 @@
 public class Student {
-    String name,stuNo;
+    String name, stuNo;
     int classes;
     Course mat;
     Course fizik;
@@ -8,7 +8,7 @@ public class Student {
     boolean isPass;
 
 
-    Student(String name, int classes, String stuNo, Course mat,Course fizik,Course kimya) {
+    Student(String name, int classes, String stuNo, Course mat, Course fizik, Course kimya) {
         this.name = name;
         this.classes = classes;
         this.stuNo = stuNo;
@@ -20,18 +20,18 @@ public class Student {
     }
 
 
-    public void addBulkExamNote(int mat, int fizik, int kimya) {
+    public void addBulkExamNote(int mat, int sMat, int fizik, int sFizik, int kimya, int sKimya) {
 
         if (mat >= 0 && mat <= 100) {
-            this.mat.note = mat;
+            this.mat.note = (int) (mat * 0.7 + sMat * 0.3);
         }
 
         if (fizik >= 0 && fizik <= 100) {
-            this.fizik.note = fizik;
+            this.fizik.note = (int) (fizik * 0.7 + sFizik * 0.3);
         }
 
         if (kimya >= 0 && kimya <= 100) {
-            this.kimya.note = kimya;
+            this.kimya.note = (int) (kimya * 0.7 + sKimya * 0.3);
         }
 
     }
@@ -52,7 +52,7 @@ public class Student {
     }
 
     public void calcAvarage() {
-        this.avarage = (this.fizik.note + this.kimya.note + this.mat.note) / 3;
+        this.avarage = (double) (this.fizik.note + this.kimya.note + this.mat.note) / 3;
     }
 
     public boolean isCheckPass() {
@@ -60,7 +60,7 @@ public class Student {
         return this.avarage > 55;
     }
 
-    public void printNote(){
+    public void printNote() {
         System.out.println("=========================");
         System.out.println("Öğrenci : " + this.name);
         System.out.println("Matematik Notu : " + this.mat.note);
